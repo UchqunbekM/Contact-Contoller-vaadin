@@ -11,20 +11,39 @@ import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import java.util.Collections;
+
 @PageTitle("Contacts")
 @Route(value = "")
 public class ListView extends VerticalLayout {
     Grid<Contact> grid = new Grid<>(Contact.class);
     TextField filtertext = new TextField();
+    ContactForm form;
 
     public ListView() {
         addClassName("list-view");
         setSizeFull();
         configureGrid();
+        configureForm();
         add(
                 getToolbar(),
-                grid
+                getContent()
         );
+    }
+
+    private Component getContent() {
+        HorizontalLayout content = new HorizontalLayout(grid, form);
+        content.setFlexGrow(2, grid);
+        content.setFlexGrow(1, form);
+        content.addClassName("content");
+        content.setSizeFull();
+        return content;
+    }
+
+    private void configureForm() {
+        form = new ContactForm(Collections.emptyList(), Collections.emptyList());
+        form.setWidth("25em");
+
     }
 
     private Component getToolbar() {
