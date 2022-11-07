@@ -6,3 +6,7 @@
         display: none;
     }
 }
+a[highligth]{
+    font-weight: bold;
+    text-decoration: underline;
+}

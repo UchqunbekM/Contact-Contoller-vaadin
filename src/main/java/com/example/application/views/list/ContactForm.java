@@ -1,4 +1,4 @@
-package com.example.application.views.list.list;
+package com.example.application.views.list;
 
 import com.example.application.data.entity.Company;
 import com.example.application.data.entity.Contact;
